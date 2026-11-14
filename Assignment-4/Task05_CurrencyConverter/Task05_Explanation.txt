@@ -1,0 +1,31 @@
+TASK 5 – CURRENCY CONVERTER
+
+1. Frame Implements ActionListener
+
+In this approach, the JFrame class itself implements the ActionListener interface. The actionPerformed() method handles button clicks and Enter key events. It keeps the event-handling code inside the main class.
+
+2. Named Inner Class
+
+A separate inner class named ConvertListener implements ActionListener. It handles the conversion event and calls the conversion method of the outer class. This separates event-handling logic from the main GUI code.
+
+3. Anonymous Inner Class
+
+An anonymous inner class is created directly when registering the event listener. It overrides actionPerformed() without creating a separately named class. This is useful for short event-handling operations.
+
+4. Lambda Expression
+
+A lambda expression provides a shorter way to implement the ActionListener interface. The conversion method is called directly using the lambda syntax.
+
+5. Window Closing
+
+WindowAdapter is used to handle the window-closing event. The dispose() method closes the application window.
+
+6. Input Validation
+
+The program converts the entered amount into a number. If the input is invalid, a NumberFormatException is handled and an error message is displayed.
+
+7. Testing
+
+All four implementations were compiled and executed. Successful conversion, Enter key operation and invalid input handling were tested.
+
+Note: The currency rates used in this assignment are sample values for demonstration and are not live exchange rates.

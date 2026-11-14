@@ -1,0 +1,37 @@
+TASK 4 – DRAW PAD
+
+1. Problems Identified
+
+a) Incorrect Method Name:
+The method was written as mouseclicked() instead of mouseClicked(). Java is case-sensitive, so the method did not correctly override the MouseListener method.
+
+b) Missing Label Update:
+The status label was not updated after clicking. Therefore, the number of clicks was not displayed correctly.
+
+c) Temporary Drawing:
+Using getGraphics() directly does not preserve drawings. When the window is minimized, restored or repainted, the drawings may disappear.
+
+2. Role of @Override
+
+The @Override annotation checks whether a method correctly overrides a method from its parent class or interface. If the method name or signature is incorrect, the compiler displays an error. It helps identify mistakes during compilation.
+
+3. Corrected Implementation
+
+The corrected program uses:
+- mouseClicked() to detect mouse clicks.
+- ArrayList to store the clicked positions.
+- status.setText() to update the click count.
+- repaint() to request the window to redraw.
+- paint() to display all stored points.
+
+4. Testing and Observations
+
+The program was tested by clicking multiple positions inside the Draw Pad window. Each click created a blue dot and increased the click counter.
+
+The window was also minimized and restored to observe the repaint behaviour. Since the clicked positions were stored in a list, the dots were drawn again when the window was repainted.
+
+5. Alternative Approach – BufferedImage
+
+BufferedImage can also be used to maintain persistent drawings. Instead of storing individual points, the application can draw directly onto an off-screen image. The paint() method can then display the image using drawImage().
+
+This approach is useful for applications that require continuous drawing and image editing. However, it requires memory proportional to the image dimensions, whereas storing points requires memory proportional to the number of clicks.

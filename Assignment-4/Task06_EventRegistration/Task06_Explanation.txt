@@ -1,0 +1,57 @@
+TASK 6 – COLLEGE EVENT REGISTRATION SYSTEM
+
+1. Project Overview
+The College Event Registration System is a Java Swing application connected to a MySQL database using JDBC. It allows students to register for college events and view existing registrations.
+
+2. Technologies Used
+- Java 21
+- Java Swing
+- JDBC
+- MySQL
+- Maven
+
+3. Project Architecture
+The application follows a layered architecture:
+
+Model Layer:
+Stores event and registration information.
+
+DAO Layer:
+Handles database operations using JDBC and PreparedStatement.
+
+Service Layer:
+Performs input validation and registration-related business logic.
+
+UI Layer:
+Provides the graphical interface using Java Swing.
+
+4. Database Design
+Two tables are used:
+- events: Stores event details, capacity and registered count.
+- registrations: Stores student registration details.
+
+A foreign key connects registrations with events. A unique constraint prevents the same student from registering for the same event more than once.
+
+5. Main Features
+- View available events.
+- Register students for events.
+- Validate student details and email addresses.
+- Prevent duplicate registrations.
+- Prevent registrations when an event is full.
+- Search registrations.
+- View registrations using pagination.
+- Export registration details as CSV.
+
+6. JDBC and Multithreading
+JDBC connects the Java application to MySQL. PreparedStatement is used for database queries.
+
+SwingWorker performs database operations in the background to keep the graphical interface responsive.
+
+7. Transaction Management
+Database transactions are used during registration. The event capacity check, registration insertion and registered count update are performed together. If an operation fails, the transaction is rolled back.
+
+8. Testing
+The application was tested for successful registration, duplicate registration, empty fields, invalid email, searching, CSV export and pagination.
+
+9. Result
+The College Event Registration System was successfully developed and tested using Java Swing, JDBC and MySQL.

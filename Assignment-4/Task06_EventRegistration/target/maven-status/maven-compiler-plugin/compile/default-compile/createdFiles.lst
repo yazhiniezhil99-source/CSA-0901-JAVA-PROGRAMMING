@@ -1,0 +1,14 @@
+dao\EventDAO.class
+ui\EventRegistrationApp$3.class
+ui\EventRegistrationApp$4.class
+service\RegistrationService.class
+ui\EventRegistrationApp$2.class
+ui\EventRegistrationApp$5.class
+ui\ConnectionTest.class
+model\Event.class
+model\RegistrationRecord.class
+ui\EventRegistrationApp$1.class
+dao\DBConnection.class
+ui\EventRegistrationApp.class
+model\Registration.class
+dao\RegistrationDAO.class

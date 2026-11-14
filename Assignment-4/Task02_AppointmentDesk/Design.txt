@@ -1,0 +1,130 @@
+TASK 2 – HOSPITAL OUTPATIENT APPOINTMENT DESK
+
+2.1 MODEL THE EVENTS
+
+| Event Source | Event Object | Listener Interface | Action |
+|---|---|---|---|
+| Patient ID TextField | ActionEvent | ActionListener | Accept patient ID |
+| Department ComboBox | ItemEvent | ItemListener | Refresh doctor list |
+| Doctor ComboBox | ItemEvent | ItemListener | Select doctor |
+| Time Slot ComboBox | ItemEvent | ItemListener | Select time slot |
+| Book Button | ActionEvent | ActionListener | Validate and book appointment |
+| Window | WindowEvent | WindowListener | Confirm before closing |
+
+2.2 COMPONENT HIERARCHY
+
+JFrame – Appointment Desk
+|
+|-- JPanel – Main Panel (BorderLayout)
+    |
+    |-- JPanel – Form Panel (GridLayout)
+    |   |-- JLabel – Patient ID
+    |   |-- JTextField – Patient ID
+    |   |-- JLabel – Department
+    |   |-- JComboBox – Department
+    |   |-- JLabel – Doctor
+    |   |-- JComboBox – Doctor
+    |   |-- JLabel – Time Slot
+    |   |-- JComboBox – Time Slot
+    |
+    |-- JPanel – Button Panel (FlowLayout)
+    |   |-- JButton – Book Appointment
+    |
+    |-- JLabel – Status Message
+
+2.3 DESIGN THE HANDLER LOGIC
+
+Algorithm 1: Refresh Doctor List
+
+BEGIN
+    READ selected department
+    CLEAR doctor list
+
+    IF department is available THEN
+        GET doctors from department map
+
+        FOR EACH doctor
+            ADD doctor to doctor list
+        END FOR
+    END IF
+
+    UPDATE doctor selection
+END
+
+Algorithm 2: Validate and Book Appointment
+
+BEGIN
+    READ patient ID
+    READ department
+    READ doctor
+    READ time slot
+
+    IF patient ID is empty THEN
+        DISPLAY "Enter Patient ID"
+
+    ELSE IF department is not selected THEN
+        DISPLAY "Select Department"
+
+    ELSE IF doctor is not selected THEN
+        DISPLAY "Select Doctor"
+
+    ELSE IF time slot is not selected THEN
+        DISPLAY "Select Time Slot"
+
+    ELSE
+        CHECK appointment availability
+
+        IF slot is available THEN
+            SAVE appointment
+            DISPLAY "Appointment Booked Successfully"
+        ELSE
+            DISPLAY "Selected Slot is Not Available"
+        END IF
+    END IF
+END
+
+2.4 TRACE THE EVENT SEQUENCE
+
+1. The application starts.
+2. main() executes.
+3. The JFrame is created.
+4. Components and listeners are registered.
+5. setVisible(true) displays the window.
+6. Receptionist enters patient ID.
+7. Department selection generates an ItemEvent.
+8. Doctor list is refreshed.
+9. Receptionist selects doctor and time slot.
+10. Book button generates an ActionEvent.
+11. Validation and booking are performed.
+12. Confirmation or error message is displayed.
+13. When the receptionist closes the window, windowClosing() is called.
+14. A confirmation dialog is displayed if booking is in progress.
+15. If closing is confirmed, dispose() is called and windowClosed() follows.
+
+APPLET LIFE CYCLE COMPARISON
+
+Window constructor – Object creation
+setVisible() – Makes the GUI visible
+paint() – Similar to applet paint()
+Window closing – Similar to applet stop()
+dispose() – Similar to applet destroy()
+
+ALTERNATIVE CONCEPT AND COMPLEXITY ANALYSIS
+
+Loading doctors from a database vs using a Map:
+
+Database Fetch:
+- A database query is required whenever the department changes.
+- Retrieving m doctors takes O(m) time, excluding database and network overhead.
+- Uses less local memory for doctor data.
+- Performance depends on database response time.
+
+Map Approach:
+- Doctor information is loaded into a Map<String, List<Doctor>> once.
+- Accessing a department entry takes O(1) average time.
+- Populating the doctor list takes O(m) time.
+- Memory usage is O(d × m), where d is the number of departments and m is the average number of doctors per department.
+
+CONCLUSION
+
+The Map approach is suitable when doctor information does not change frequently because it avoids repeated database queries and provides faster access. Database fetching is preferable when doctor details and availability change frequently.
