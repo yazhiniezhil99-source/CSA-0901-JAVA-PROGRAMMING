@@ -1,0 +1,5 @@
+P101,REG101,Student A,R12,1500.0
+P102,REG102,Student B
+P103,REG103,Student C,R20,invalid
+
+P104,REG104,Student D,R15,1800.0

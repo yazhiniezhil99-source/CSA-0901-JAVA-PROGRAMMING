@@ -1,0 +1,4 @@
+Student A - Present
+Student B - Present
+Student C - Absent
+Student D - Present
